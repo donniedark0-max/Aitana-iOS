@@ -6,13 +6,43 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		E3A29AE22EBEC5C000F75960 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A29ADF2EBEC5C000F75960 /* ContentView.swift */; };
+		E3A29AEF2EBECFC000F75960 /* Geist-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E3A29AED2EBECFC000F75960 /* Geist-Regular.otf */; };
+		E3A29AF02EBECFC000F75960 /* GeistMono-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E3A29AEE2EBECFC000F75960 /* GeistMono-Regular.otf */; };
+		E3A29AF12EBECFC000F75960 /* Geist-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E3A29AEC2EBECFC000F75960 /* Geist-Bold.otf */; };
+		E3A29AF32EBED19E00F75960 /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A29AF22EBED01A00F75960 /* Font+Extensions.swift */; };
+		E3A29AF52EBED8C900F75960 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A29AF42EBED8C700F75960 /* Color+Extensions.swift */; };
+		E3A29AF72EBED94800F75960 /* AnimatedGradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A29AF62EBED94700F75960 /* AnimatedGradientButton.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		E39732F92EBE890100D13AAD /* Aitana-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aitana-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3A29ADF2EBEC5C000F75960 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E3A29AEC2EBECFC000F75960 /* Geist-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Geist-Bold.otf"; sourceTree = "<group>"; };
+		E3A29AED2EBECFC000F75960 /* Geist-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Geist-Regular.otf"; sourceTree = "<group>"; };
+		E3A29AEE2EBECFC000F75960 /* GeistMono-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeistMono-Regular.otf"; sourceTree = "<group>"; };
+		E3A29AF22EBED01A00F75960 /* Font+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extensions.swift"; sourceTree = "<group>"; };
+		E3A29AF42EBED8C700F75960 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
+		E3A29AF62EBED94700F75960 /* AnimatedGradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedGradientButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		E3A29ADC2EBEC4D500F75960 /* Exceptions for "Aitana-iOS" folder in "Aitana-iOS" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = E39732F82EBE890100D13AAD /* Aitana-iOS */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		E39732FB2EBE890100D13AAD /* Aitana-iOS */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				E3A29ADC2EBEC4D500F75960 /* Exceptions for "Aitana-iOS" folder in "Aitana-iOS" target */,
+			);
 			path = "Aitana-iOS";
 			sourceTree = "<group>";
 		};
@@ -32,6 +62,10 @@
 		E39732F02EBE890100D13AAD = {
 			isa = PBXGroup;
 			children = (
+				E3A29AEB2EBECE9700F75960 /* Fonts */,
+				E3A29AEA2EBEC8AF00F75960 /* Models */,
+				E3A29AE82EBEC88C00F75960 /* Features */,
+				E3A29AE52EBEC86300F75960 /* Core */,
 				E39732FB2EBE890100D13AAD /* Aitana-iOS */,
 				E39732FA2EBE890100D13AAD /* Products */,
 			);
@@ -43,6 +77,65 @@
 				E39732F92EBE890100D13AAD /* Aitana-iOS.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		E3A29AE52EBEC86300F75960 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				E3A29AF42EBED8C700F75960 /* Color+Extensions.swift */,
+				E3A29AF22EBED01A00F75960 /* Font+Extensions.swift */,
+				E3A29AE72EBEC87F00F75960 /* Services */,
+				E3A29AE62EBEC86E00F75960 /* Networking */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		E3A29AE62EBEC86E00F75960 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		E3A29AE72EBEC87F00F75960 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		E3A29AE82EBEC88C00F75960 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				E3A29AE92EBEC89900F75960 /* LiveView */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		E3A29AE92EBEC89900F75960 /* LiveView */ = {
+			isa = PBXGroup;
+			children = (
+				E3A29AF62EBED94700F75960 /* AnimatedGradientButton.swift */,
+				E3A29ADF2EBEC5C000F75960 /* ContentView.swift */,
+			);
+			path = LiveView;
+			sourceTree = "<group>";
+		};
+		E3A29AEA2EBEC8AF00F75960 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E3A29AEB2EBECE9700F75960 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E3A29AEC2EBECFC000F75960 /* Geist-Bold.otf */,
+				E3A29AED2EBECFC000F75960 /* Geist-Regular.otf */,
+				E3A29AEE2EBECFC000F75960 /* GeistMono-Regular.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -109,6 +202,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3A29AEF2EBECFC000F75960 /* Geist-Regular.otf in Resources */,
+				E3A29AF02EBECFC000F75960 /* GeistMono-Regular.otf in Resources */,
+				E3A29AF12EBECFC000F75960 /* Geist-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +215,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3A29AF32EBED19E00F75960 /* Font+Extensions.swift in Sources */,
+				E3A29AE22EBEC5C000F75960 /* ContentView.swift in Sources */,
+				E3A29AF52EBED8C900F75960 /* Color+Extensions.swift in Sources */,
+				E3A29AF72EBED94800F75960 /* AnimatedGradientButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +353,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Aitana-iOS/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Aitana necesita acceso a la cámara para analizar tu entorno en tiempo real.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Aitana necesita acceso al micrófono para escuchar tus comandos y conversar contigo.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -284,6 +387,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Aitana-iOS/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Aitana necesita acceso a la cámara para analizar tu entorno en tiempo real.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Aitana necesita acceso al micrófono para escuchar tus comandos y conversar contigo.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
