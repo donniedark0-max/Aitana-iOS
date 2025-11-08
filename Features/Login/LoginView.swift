@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct LoginView: View {
+    var onLoginSuccess: () -> Void
     @State private var username = ""
     @State private var password = ""
     @State private var isLoading = false
@@ -43,6 +44,7 @@ struct ContentView: View {
                         isLoading = true
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                             isLoading = false
+                            onLoginSuccess()
                         }
                     }
                     .disabled(isLoading)
@@ -160,5 +162,7 @@ struct UnderlinedSecureField: View {
 }
 
 #Preview {
-    ContentView()
+    LoginView(onLoginSuccess: {
+        print("Login exitoso en la vista previa.")
+    })
 }

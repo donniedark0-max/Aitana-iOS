@@ -7,24 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E3A29AE22EBEC5C000F75960 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A29ADF2EBEC5C000F75960 /* ContentView.swift */; };
+		E3A29AE22EBEC5C000F75960 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A29ADF2EBEC5C000F75960 /* LoginView.swift */; };
 		E3A29AEF2EBECFC000F75960 /* Geist-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E3A29AED2EBECFC000F75960 /* Geist-Regular.otf */; };
 		E3A29AF02EBECFC000F75960 /* GeistMono-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E3A29AEE2EBECFC000F75960 /* GeistMono-Regular.otf */; };
 		E3A29AF12EBECFC000F75960 /* Geist-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E3A29AEC2EBECFC000F75960 /* Geist-Bold.otf */; };
 		E3A29AF32EBED19E00F75960 /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A29AF22EBED01A00F75960 /* Font+Extensions.swift */; };
 		E3A29AF52EBED8C900F75960 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A29AF42EBED8C700F75960 /* Color+Extensions.swift */; };
 		E3A29AF72EBED94800F75960 /* AnimatedGradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A29AF62EBED94700F75960 /* AnimatedGradientButton.swift */; };
+		E3A5C5F32EBFCE2500782EDB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A5C5F22EBFCE2300782EDB /* OnboardingView.swift */; };
+		E3A5C5FD2EBFCE5D00782EDB /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A5C5FC2EBFCE5C00782EDB /* GradientButton.swift */; };
+		E3A5C6022EBFD23D00782EDB /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A5C6012EBFCFFB00782EDB /* RootView.swift */; };
+		E3A5C6072EBFD6B000782EDB /* SettingsStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A5C6052EBFD6B000782EDB /* SettingsStepView.swift */; };
+		E3A5C6082EBFD6B000782EDB /* WelcomeStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A5C6062EBFD6B000782EDB /* WelcomeStepView.swift */; };
+		E3A5C6092EBFD6B000782EDB /* PersonalInfoStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A5C6032EBFD6B000782EDB /* PersonalInfoStepView.swift */; };
+		E3A5C60A2EBFD6B000782EDB /* ProfilePhotoStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A5C6042EBFD6B000782EDB /* ProfilePhotoStepView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E39732F92EBE890100D13AAD /* Aitana-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aitana-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E3A29ADF2EBEC5C000F75960 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E3A29ADF2EBEC5C000F75960 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		E3A29AEC2EBECFC000F75960 /* Geist-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Geist-Bold.otf"; sourceTree = "<group>"; };
 		E3A29AED2EBECFC000F75960 /* Geist-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Geist-Regular.otf"; sourceTree = "<group>"; };
 		E3A29AEE2EBECFC000F75960 /* GeistMono-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeistMono-Regular.otf"; sourceTree = "<group>"; };
 		E3A29AF22EBED01A00F75960 /* Font+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extensions.swift"; sourceTree = "<group>"; };
 		E3A29AF42EBED8C700F75960 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		E3A29AF62EBED94700F75960 /* AnimatedGradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedGradientButton.swift; sourceTree = "<group>"; };
+		E3A5C5F22EBFCE2300782EDB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		E3A5C5FC2EBFCE5C00782EDB /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
+		E3A5C6012EBFCFFB00782EDB /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		E3A5C6032EBFD6B000782EDB /* PersonalInfoStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoStepView.swift; sourceTree = "<group>"; };
+		E3A5C6042EBFD6B000782EDB /* ProfilePhotoStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePhotoStepView.swift; sourceTree = "<group>"; };
+		E3A5C6052EBFD6B000782EDB /* SettingsStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStepView.swift; sourceTree = "<group>"; };
+		E3A5C6062EBFD6B000782EDB /* WelcomeStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeStepView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -62,6 +76,7 @@
 		E39732F02EBE890100D13AAD = {
 			isa = PBXGroup;
 			children = (
+				E3A5C6002EBFCFF300782EDB /* App */,
 				E3A29AEB2EBECE9700F75960 /* Fonts */,
 				E3A29AEA2EBEC8AF00F75960 /* Models */,
 				E3A29AE82EBEC88C00F75960 /* Features */,
@@ -82,6 +97,7 @@
 		E3A29AE52EBEC86300F75960 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				E3A5C5FE2EBFCF7200782EDB /* Components */,
 				E3A29AF42EBED8C700F75960 /* Color+Extensions.swift */,
 				E3A29AF22EBED01A00F75960 /* Font+Extensions.swift */,
 				E3A29AE72EBEC87F00F75960 /* Services */,
@@ -107,6 +123,8 @@
 		E3A29AE82EBEC88C00F75960 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				E3A5C5FF2EBFCFD500782EDB /* Login */,
+				E3A5C5F12EBFCD6B00782EDB /* Onboarding */,
 				E3A29AE92EBEC89900F75960 /* LiveView */,
 			);
 			path = Features;
@@ -115,8 +133,6 @@
 		E3A29AE92EBEC89900F75960 /* LiveView */ = {
 			isa = PBXGroup;
 			children = (
-				E3A29AF62EBED94700F75960 /* AnimatedGradientButton.swift */,
-				E3A29ADF2EBEC5C000F75960 /* ContentView.swift */,
 			);
 			path = LiveView;
 			sourceTree = "<group>";
@@ -136,6 +152,43 @@
 				E3A29AEE2EBECFC000F75960 /* GeistMono-Regular.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		E3A5C5F12EBFCD6B00782EDB /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				E3A5C5F22EBFCE2300782EDB /* OnboardingView.swift */,
+				E3A5C6032EBFD6B000782EDB /* PersonalInfoStepView.swift */,
+				E3A5C6042EBFD6B000782EDB /* ProfilePhotoStepView.swift */,
+				E3A5C6052EBFD6B000782EDB /* SettingsStepView.swift */,
+				E3A5C6062EBFD6B000782EDB /* WelcomeStepView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		E3A5C5FE2EBFCF7200782EDB /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				E3A5C5FC2EBFCE5C00782EDB /* GradientButton.swift */,
+				E3A29AF62EBED94700F75960 /* AnimatedGradientButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		E3A5C5FF2EBFCFD500782EDB /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E3A29ADF2EBEC5C000F75960 /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		E3A5C6002EBFCFF300782EDB /* App */ = {
+			isa = PBXGroup;
+			children = (
+				E3A5C6012EBFCFFB00782EDB /* RootView.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,10 +268,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3A5C6072EBFD6B000782EDB /* SettingsStepView.swift in Sources */,
+				E3A5C6082EBFD6B000782EDB /* WelcomeStepView.swift in Sources */,
+				E3A5C6092EBFD6B000782EDB /* PersonalInfoStepView.swift in Sources */,
+				E3A5C60A2EBFD6B000782EDB /* ProfilePhotoStepView.swift in Sources */,
 				E3A29AF32EBED19E00F75960 /* Font+Extensions.swift in Sources */,
-				E3A29AE22EBEC5C000F75960 /* ContentView.swift in Sources */,
+				E3A29AE22EBEC5C000F75960 /* LoginView.swift in Sources */,
+				E3A5C5F32EBFCE2500782EDB /* OnboardingView.swift in Sources */,
 				E3A29AF52EBED8C900F75960 /* Color+Extensions.swift in Sources */,
 				E3A29AF72EBED94800F75960 /* AnimatedGradientButton.swift in Sources */,
+				E3A5C6022EBFD23D00782EDB /* RootView.swift in Sources */,
+				E3A5C5FD2EBFCE5D00782EDB /* GradientButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
