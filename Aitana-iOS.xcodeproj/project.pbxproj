@@ -21,6 +21,7 @@
 		E3A5C6082EBFD6B000782EDB /* WelcomeStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A5C6062EBFD6B000782EDB /* WelcomeStepView.swift */; };
 		E3A5C6092EBFD6B000782EDB /* PersonalInfoStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A5C6032EBFD6B000782EDB /* PersonalInfoStepView.swift */; };
 		E3A5C60A2EBFD6B000782EDB /* ProfilePhotoStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A5C6042EBFD6B000782EDB /* ProfilePhotoStepView.swift */; };
+		E3D7B1EF2EC1CF33005C5FEC /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D7B1EE2EC1CF2A005C5FEC /* DashboardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		E3A5C6042EBFD6B000782EDB /* ProfilePhotoStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePhotoStepView.swift; sourceTree = "<group>"; };
 		E3A5C6052EBFD6B000782EDB /* SettingsStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStepView.swift; sourceTree = "<group>"; };
 		E3A5C6062EBFD6B000782EDB /* WelcomeStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeStepView.swift; sourceTree = "<group>"; };
+		E3D7B1EE2EC1CF2A005C5FEC /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -123,6 +125,7 @@
 		E3A29AE82EBEC88C00F75960 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				E3D7B1ED2EC1CF1B005C5FEC /* Dashboard */,
 				E3A5C5FF2EBFCFD500782EDB /* Login */,
 				E3A5C5F12EBFCD6B00782EDB /* Onboarding */,
 				E3A29AE92EBEC89900F75960 /* LiveView */,
@@ -189,6 +192,14 @@
 				E3A5C6012EBFCFFB00782EDB /* RootView.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		E3D7B1ED2EC1CF1B005C5FEC /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				E3D7B1EE2EC1CF2A005C5FEC /* DashboardView.swift */,
+			);
+			path = Dashboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,6 +289,7 @@
 				E3A29AF52EBED8C900F75960 /* Color+Extensions.swift in Sources */,
 				E3A29AF72EBED94800F75960 /* AnimatedGradientButton.swift in Sources */,
 				E3A5C6022EBFD23D00782EDB /* RootView.swift in Sources */,
+				E3D7B1EF2EC1CF33005C5FEC /* DashboardView.swift in Sources */,
 				E3A5C5FD2EBFCE5D00782EDB /* GradientButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
