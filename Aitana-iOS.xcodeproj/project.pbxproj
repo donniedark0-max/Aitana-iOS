@@ -22,6 +22,7 @@
 		E3A5C6092EBFD6B000782EDB /* PersonalInfoStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A5C6032EBFD6B000782EDB /* PersonalInfoStepView.swift */; };
 		E3A5C60A2EBFD6B000782EDB /* ProfilePhotoStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A5C6042EBFD6B000782EDB /* ProfilePhotoStepView.swift */; };
 		E3D7B1EF2EC1CF33005C5FEC /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D7B1EE2EC1CF2A005C5FEC /* DashboardView.swift */; };
+		E3D7B1F52EC1D5BA005C5FEC /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = E3D7B1F42EC1D5B3005C5FEC /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		E3A5C6052EBFD6B000782EDB /* SettingsStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStepView.swift; sourceTree = "<group>"; };
 		E3A5C6062EBFD6B000782EDB /* WelcomeStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeStepView.swift; sourceTree = "<group>"; };
 		E3D7B1EE2EC1CF2A005C5FEC /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		E3D7B1F42EC1D5B3005C5FEC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -78,6 +80,7 @@
 		E39732F02EBE890100D13AAD = {
 			isa = PBXGroup;
 			children = (
+				E3D7B1F42EC1D5B3005C5FEC /* README.md */,
 				E3A5C6002EBFCFF300782EDB /* App */,
 				E3A29AEB2EBECE9700F75960 /* Fonts */,
 				E3A29AEA2EBEC8AF00F75960 /* Models */,
@@ -287,6 +290,7 @@
 				E3A29AE22EBEC5C000F75960 /* LoginView.swift in Sources */,
 				E3A5C5F32EBFCE2500782EDB /* OnboardingView.swift in Sources */,
 				E3A29AF52EBED8C900F75960 /* Color+Extensions.swift in Sources */,
+				E3D7B1F52EC1D5BA005C5FEC /* README.md in Sources */,
 				E3A29AF72EBED94800F75960 /* AnimatedGradientButton.swift in Sources */,
 				E3A5C6022EBFD23D00782EDB /* RootView.swift in Sources */,
 				E3D7B1EF2EC1CF33005C5FEC /* DashboardView.swift in Sources */,
