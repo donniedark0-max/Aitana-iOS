@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E31014832EC446490059CD95 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31014822EC446430059CD95 /* CameraManager.swift */; };
 		E3A29AE22EBEC5C000F75960 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A29ADF2EBEC5C000F75960 /* LoginView.swift */; };
 		E3A29AEF2EBECFC000F75960 /* Geist-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E3A29AED2EBECFC000F75960 /* Geist-Regular.otf */; };
 		E3A29AF02EBECFC000F75960 /* GeistMono-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E3A29AEE2EBECFC000F75960 /* GeistMono-Regular.otf */; };
@@ -21,11 +22,17 @@
 		E3A5C6082EBFD6B000782EDB /* WelcomeStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A5C6062EBFD6B000782EDB /* WelcomeStepView.swift */; };
 		E3A5C6092EBFD6B000782EDB /* PersonalInfoStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A5C6032EBFD6B000782EDB /* PersonalInfoStepView.swift */; };
 		E3A5C60A2EBFD6B000782EDB /* ProfilePhotoStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A5C6042EBFD6B000782EDB /* ProfilePhotoStepView.swift */; };
+		E3D7B1EC2EC1CEF8005C5FEC /* Aitana_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D7B1E72EC1CEF8005C5FEC /* Aitana_iOSApp.swift */; };
 		E3D7B1EF2EC1CF33005C5FEC /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D7B1EE2EC1CF2A005C5FEC /* DashboardView.swift */; };
 		E3D7B1F52EC1D5BA005C5FEC /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = E3D7B1F42EC1D5B3005C5FEC /* README.md */; };
+		E3D7B1F72EC26A07005C5FEC /* LiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D7B1F62EC269FB005C5FEC /* LiveView.swift */; };
+		E3D7B1FA2EC272FB005C5FEC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D7B1F92EC272F6005C5FEC /* SettingsView.swift */; };
+		E3D7B1FC2EC2789D005C5FEC /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D7B1FB2EC2789C005C5FEC /* AppCoordinator.swift */; };
+		E3D7B2002EC27A39005C5FEC /* CameraService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D7B1FF2EC27A33005C5FEC /* CameraService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E31014822EC446430059CD95 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
 		E39732F92EBE890100D13AAD /* Aitana-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aitana-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3A29ADF2EBEC5C000F75960 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		E3A29AEC2EBECFC000F75960 /* Geist-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Geist-Bold.otf"; sourceTree = "<group>"; };
@@ -41,8 +48,13 @@
 		E3A5C6042EBFD6B000782EDB /* ProfilePhotoStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePhotoStepView.swift; sourceTree = "<group>"; };
 		E3A5C6052EBFD6B000782EDB /* SettingsStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStepView.swift; sourceTree = "<group>"; };
 		E3A5C6062EBFD6B000782EDB /* WelcomeStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeStepView.swift; sourceTree = "<group>"; };
+		E3D7B1E72EC1CEF8005C5FEC /* Aitana_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aitana_iOSApp.swift; sourceTree = "<group>"; };
 		E3D7B1EE2EC1CF2A005C5FEC /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		E3D7B1F42EC1D5B3005C5FEC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		E3D7B1F62EC269FB005C5FEC /* LiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveView.swift; sourceTree = "<group>"; };
+		E3D7B1F92EC272F6005C5FEC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		E3D7B1FB2EC2789C005C5FEC /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		E3D7B1FF2EC27A33005C5FEC /* CameraService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -121,6 +133,8 @@
 		E3A29AE72EBEC87F00F75960 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				E31014822EC446430059CD95 /* CameraManager.swift */,
+				E3D7B1FF2EC27A33005C5FEC /* CameraService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -128,6 +142,7 @@
 		E3A29AE82EBEC88C00F75960 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				E3D7B1F82EC272EB005C5FEC /* Settings */,
 				E3D7B1ED2EC1CF1B005C5FEC /* Dashboard */,
 				E3A5C5FF2EBFCFD500782EDB /* Login */,
 				E3A5C5F12EBFCD6B00782EDB /* Onboarding */,
@@ -139,6 +154,7 @@
 		E3A29AE92EBEC89900F75960 /* LiveView */ = {
 			isa = PBXGroup;
 			children = (
+				E3D7B1F62EC269FB005C5FEC /* LiveView.swift */,
 			);
 			path = LiveView;
 			sourceTree = "<group>";
@@ -192,7 +208,9 @@
 		E3A5C6002EBFCFF300782EDB /* App */ = {
 			isa = PBXGroup;
 			children = (
+				E3D7B1FB2EC2789C005C5FEC /* AppCoordinator.swift */,
 				E3A5C6012EBFCFFB00782EDB /* RootView.swift */,
+				E3D7B1E72EC1CEF8005C5FEC /* Aitana_iOSApp.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -203,6 +221,14 @@
 				E3D7B1EE2EC1CF2A005C5FEC /* DashboardView.swift */,
 			);
 			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		E3D7B1F82EC272EB005C5FEC /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E3D7B1F92EC272F6005C5FEC /* SettingsView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,13 +309,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3A5C6072EBFD6B000782EDB /* SettingsStepView.swift in Sources */,
+				E3D7B2002EC27A39005C5FEC /* CameraService.swift in Sources */,
 				E3A5C6082EBFD6B000782EDB /* WelcomeStepView.swift in Sources */,
+				E3D7B1FC2EC2789D005C5FEC /* AppCoordinator.swift in Sources */,
 				E3A5C6092EBFD6B000782EDB /* PersonalInfoStepView.swift in Sources */,
+				E3D7B1EC2EC1CEF8005C5FEC /* Aitana_iOSApp.swift in Sources */,
 				E3A5C60A2EBFD6B000782EDB /* ProfilePhotoStepView.swift in Sources */,
 				E3A29AF32EBED19E00F75960 /* Font+Extensions.swift in Sources */,
+				E3D7B1F72EC26A07005C5FEC /* LiveView.swift in Sources */,
 				E3A29AE22EBEC5C000F75960 /* LoginView.swift in Sources */,
 				E3A5C5F32EBFCE2500782EDB /* OnboardingView.swift in Sources */,
+				E3D7B1FA2EC272FB005C5FEC /* SettingsView.swift in Sources */,
 				E3A29AF52EBED8C900F75960 /* Color+Extensions.swift in Sources */,
+				E31014832EC446490059CD95 /* CameraManager.swift in Sources */,
 				E3D7B1F52EC1D5BA005C5FEC /* README.md in Sources */,
 				E3A29AF72EBED94800F75960 /* AnimatedGradientButton.swift in Sources */,
 				E3A5C6022EBFD23D00782EDB /* RootView.swift in Sources */,
@@ -427,6 +459,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WA5LZ4G5HR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Aitana-iOS/Info.plist";
@@ -461,6 +494,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WA5LZ4G5HR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Aitana-iOS/Info.plist";

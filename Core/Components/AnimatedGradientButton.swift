@@ -43,6 +43,7 @@ struct AnimatedGradientButton: View {
                     // CORREGIDO: Simplemente activamos el "interruptor" cuando la vista aparece.
                     isAnimating = true
                 }
+                .buttonStyle(.glassProminent)
         }
     }
 }

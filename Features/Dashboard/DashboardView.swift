@@ -9,64 +9,57 @@ import SwiftUI
 
 // MARK: - Vista Principal del Dashboard
 struct DashboardView: View {
+    // Inyectamos el coordinador para poder llamar a sus funciones
+    @EnvironmentObject var coordinator: AppCoordinator
+    
     var body: some View {
-        // Usamos un ZStack para poder poner un color de fondo global.
         ZStack {
-            Color.white.ignoresSafeArea() // Fondo blanco
+            Color.white.ignoresSafeArea()
             
             ScrollView {
                 VStack(spacing: 0) {
-                    // --- Header ---
                     DashboardHeader()
                     
-                    // --- Contenido Principal ---
-                    VStack(spacing: 64) { // space-y-16
-                        // --- Sección MIS DATOS ---
+                    VStack(spacing: 64) {
                         DashboardSection(title: "MIS DATOS") {
                             DashboardRow(label: "Perfil", value: "Configurado")
                             DashboardRow(label: "Estado", value: "Activo", valueColor: .brandAccent)
                         }
                         
-                        // --- Sección ACCIONES ---
+                        // --- Sección ACCIONES (CORREGIDA) ---
                         DashboardSection(title: "ACCIONES") {
-                            DashboardActionButton(title: "VOLVER") { print("Volver presionado") }
-                            DashboardActionButton(title: "CONFIGURACIÓN") { print("Configuración presionada") }
-                            DashboardActionButton(title: "PREFERENCIAS") { print("Preferencias presionado") }
-                            DashboardActionButton(title: "CERRAR SESIÓN") { print("Cerrar Sesión presionado") }
+                            // Ahora los botones llaman a las funciones del coordinador
+                            DashboardActionButton(title: "VOLVER") { coordinator.goBack() }
+                            DashboardActionButton(title: "CONFIGURACIÓN") { coordinator.showSettings() }
+                            DashboardActionButton(title: "PREFERENCIAS") { /* Lógica futura */ }
+                            DashboardActionButton(title: "CERRAR SESIÓN") { coordinator.logout() }
                         }
                     }
-                    .padding(.horizontal, 24) // px-6
-                    .padding(.vertical, 48)   // py-12
+                    .padding(.horizontal, 24)
+                    .padding(.vertical, 48)
                     
-                    // --- Footer ---
                     DashboardFooter()
                 }
             }
         }
+        // Añadimos un título a la barra de navegación para cuando se navega a esta vista
+        .navigationTitle("Dashboard")
+        .navigationBarHidden(true) // Ocultamos la barra de navegación estándar para usar nuestro header personalizado
     }
 }
 
-// MARK: - Componentes Reutilizables de la Vista
+// MARK: - Componentes Reutilizables de la Vista (sin cambios)
 
 private struct DashboardHeader: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 4) {
-                Text("BIENVENIDO")
-                    .font(.geist(12, weight: .bold))
-                    .tracking(2.0) // tracking-widest
-                Text("素晴らしい") // "Subarashī" - Maravilloso
-                    .font(.system(size: 12))
-                    .foregroundColor(.textMuted)
+                Text("BIENVENIDO").font(.geist(12, weight: .bold)).tracking(2.0)
+                Text("素晴らしい").font(.system(size: 12)).foregroundColor(.textMuted)
             }
-            
             Spacer()
-            
-            // Círculo de perfil anidado
             ZStack {
-                Circle()
-                    .fill(Color.brandPrimary.opacity(0.20))
-                    .frame(width: 32, height: 32)
+                Circle().fill(Color.brandPrimary.opacity(0.20)).frame(width: 32, height: 32)
             }
             .frame(width: 40, height: 40)
             .background(Circle().fill(Color.brandPrimary.opacity(0.10)))
@@ -74,11 +67,7 @@ private struct DashboardHeader: View {
         .padding(.horizontal, 24)
         .padding(.vertical, 24)
         .background(
-            // Borde inferior
-            Rectangle()
-                .frame(height: 1)
-                .foregroundColor(.borderDefault)
-                .opacity(0.3)
+            Rectangle().frame(height: 1).foregroundColor(.borderDefault)
                 .frame(maxHeight: .infinity, alignment: .bottom)
         )
     }
@@ -89,16 +78,9 @@ private struct DashboardSection<Content: View>: View {
     @ViewBuilder let content: Content
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 24) { // space-y-6
-            Rectangle()
-                .fill(Color.borderDefault)
-                .opacity(0.3)
-                .frame(width: 48, height: 1) // w-12
-            
-            Text(title)
-                .font(.geist(14, weight: .light))
-                .tracking(1.0) // tracking-wide
-            
+        VStack(alignment: .leading, spacing: 24) {
+            Rectangle().fill(Color.borderDefault).frame(width: 48, height: 1)
+            Text(title).font(.geist(14, weight: .light)).tracking(1.0)
             content
         }
     }
@@ -111,19 +93,13 @@ private struct DashboardRow: View {
     
     var body: some View {
         HStack {
-            Text(label)
-                .font(.geist(12))
-                .foregroundColor(.textMuted)
+            Text(label).font(.geist(12)).foregroundColor(.textMuted)
             Spacer()
-            Text(value)
-                .font(.geist(12))
-                .foregroundColor(valueColor)
+            Text(value).font(.geist(12)).foregroundColor(valueColor)
         }
-        .padding(.vertical, 12) // py-3
+        .padding(.vertical, 12)
         .background(
-            Rectangle()
-                .frame(height: 1)
-                .foregroundColor(.borderDefault.opacity(0.3))
+            Rectangle().frame(height: 1).foregroundColor(.borderDefault.opacity(0.5))
                 .frame(maxHeight: .infinity, alignment: .bottom)
         )
     }
@@ -136,11 +112,10 @@ private struct DashboardActionButton: View {
     var body: some View {
         Button(action: action) {
             HStack {
-                Text("↳ \(title)")
-                    .font(.geist(12))
+                Text("↳ \(title)").font(.geist(12))
                 Spacer()
             }
-            .padding(.vertical, 6) // py-3 (ajustado para mejor sensación táctil)
+            .padding(.vertical, 6)
         }
         .foregroundColor(.textPrimary)
     }
@@ -148,22 +123,18 @@ private struct DashboardActionButton: View {
 
 private struct DashboardFooter: View {
     var body: some View {
-        VStack(spacing: 8) { // space-y-2
-            Rectangle()
-                .fill(Color.brandAccent)
-                .frame(width: 4, height: 24) // w-1 h-6 (ajustado para mejor visibilidad)
-            
-            Text("素晴らしい世界") // "Subarashī sekai" - Mundo Maravilloso
-                .font(.system(size: 12))
-                .foregroundColor(.textMuted)
+        VStack(spacing: 8) {
+            Rectangle().fill(Color.brandAccent).frame(width: 4, height: 24)
+            Text("素晴らしい世界").font(.system(size: 12)).foregroundColor(.textMuted)
         }
         .padding(.horizontal, 24)
         .padding(.vertical, 48)
     }
 }
 
-
 // MARK: - Vista Previa
 #Preview {
+    // La vista previa también necesita el coordinador para funcionar
     DashboardView()
+        .environmentObject(AppCoordinator())
 }

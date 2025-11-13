@@ -29,6 +29,7 @@ struct GradientButton: View {
                     )
                 )
                 .cornerRadius(30) // Aplicando el radio de esquina que definiste
+                .buttonStyle(.glassProminent)
         }
     }
 }
