@@ -12,44 +12,47 @@ import Combine
 @MainActor
 class CameraService: ObservableObject {
     @Published var previewLayer: AVCaptureVideoPreviewLayer?
-    @Published var ambientColors: [Color] = [.gray.opacity(0.1), .gray.opacity(0.2)]
+    
+    // NUEVO: Un closure para que el ViewModel se suscriba a los fotogramas
+    var onSampleBuffer: ((CMSampleBuffer) -> Void)?
 
     private let manager = CameraManager()
     private var isConfigured = false
     private var isRunning = false
 
     init() {
-        manager.onPreviewLayerReady = { [weak self] layer in
-            DispatchQueue.main.async {
-                self?.previewLayer = layer
-                print("📹 Preview layer ready (frame initially) = \(layer.frame)")
-            }
-            DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 0.2) {
-                let frame = layer.bounds
-                if frame.width > 0 && frame.height > 0 {
-                    self?.manager.start()
-                    self?.isRunning = true
-                    print("📹 captureSession started after delay with valid layer size = \(frame)")
-                } else {
-                    print("⚠️ preview layer size still zero, delaying start: \(frame)")
+            manager.onPreviewLayerReady = { [weak self] layer in
+                DispatchQueue.main.async {
+                    self?.previewLayer = layer
+                    print("📹 Preview layer ready (frame initially) = \(layer.frame)")
+                }
+                DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 0.2) {
+                    let frame = layer.bounds
+                    if frame.width > 0 && frame.height > 0 {
+                        self?.manager.start()
+                        self?.isRunning = true
+                        print("📹 captureSession started after delay with valid layer size = \(frame)")
+                    } else {
+                        print("⚠️ preview layer size still zero, delaying start: \(frame)")
+                    }
                 }
             }
+
+            manager.onSampleBuffer = { [weak self] buffer in
+                self?.onSampleBuffer?(buffer)
+            }
         }
 
-        manager.onAmbientColorsReady = { [weak self] colors in
-            self?.ambientColors = colors
-        }
-    }
-
+    
     func configure() {
-        guard !isConfigured else {
-            print("⚙️ Camera already configured, skipping reconfiguration.")
-            return
+            guard !isConfigured else {
+                print("⚙️ Camera already configured, skipping reconfiguration.")
+                return
+            }
+            manager.configure()
+            isConfigured = true
         }
-        manager.configure()
-        isConfigured = true
-    }
-
+    
     func start() {
         print("▶️ Starting camera service...")
         manager.start()
@@ -61,15 +64,14 @@ class CameraService: ObservableObject {
         manager.stop()
         isRunning = false
     }
-
-    /// Reinicia la sesión si está detenida
+    
     func restartIfNeeded() {
-        if !isRunning {
-            print("🔄 Restarting camera session after navigation return...")
-            manager.start()
-            isRunning = true
+            if !isRunning {
+                print("🔄 Restarting camera session after navigation return...")
+                manager.start()
+                isRunning = true
+            }
         }
-    }
 
     func switchCamera() {
         manager.switchCamera()
@@ -80,11 +82,13 @@ class CameraService: ObservableObject {
 
 struct CameraPreview: UIViewRepresentable {
     let layer: AVCaptureVideoPreviewLayer
+    var onReady: () -> Void
 
     func makeUIView(context: Context) -> PreviewUIView {
         let view = PreviewUIView()
         view.previewLayer = layer
         view.backgroundColor = .black
+        view.onReady = onReady
         return view
     }
 
@@ -94,6 +98,8 @@ struct CameraPreview: UIViewRepresentable {
 
     class PreviewUIView: UIView {
         var previewLayer: AVCaptureVideoPreviewLayer!
+        var onReady: (() -> Void)?
+        private var hasStarted = false
 
         override func layoutSubviews() {
             super.layoutSubviews()
@@ -101,7 +107,15 @@ struct CameraPreview: UIViewRepresentable {
             if previewLayer.superlayer == nil {
                 layer.addSublayer(previewLayer)
                 print("📐 Added preview layer to UIView: \(bounds)")
+            } else {
+                previewLayer.frame = self.bounds
             }
+            
+            if !hasStarted && bounds.width > 0 && bounds.height > 0 {
+                           onReady?()
+                           hasStarted = true
+                           print("✅ PreviewUIView está lista. Iniciando sesión de cámara.")
+                       }
         }
     }
 }

@@ -10,18 +10,23 @@ import Combine
 
 struct LiveView: View {
     @EnvironmentObject var coordinator: AppCoordinator
-    @StateObject private var cameraService = CameraService()
     
-    @State private var cameraOpacity: Double = 0.0
-
-    
-    @State private var isAnalyzing = false
-    @State private var isListening = true
+    @StateObject private var cameraService: CameraService
+    @StateObject private var viewModel: LiveViewModel
     
     @State private var isShowingSettings = false
+    @State private var isShowingDashboard = false
+
+
+    // El inicializador que conecta todo.
+    init() {
+        let service = CameraService()
+        _cameraService = StateObject(wrappedValue: service)
+        _viewModel = StateObject(wrappedValue: LiveViewModel(cameraService: service))
+    }
     
     private var panelBubbleColors: [Color] {
-        if isListening {
+        if viewModel.isListening {
             return [.brandPrimary, .brandSecondary.opacity(0.8)]
         } else {
             return [.brandPrimary.opacity(0.6), .brandSecondary.opacity(0.4)]
@@ -32,13 +37,12 @@ struct LiveView: View {
         ZStack {
             // Capa 1 (Fondo): La cámara en vivo.
             if let previewLayer = cameraService.previewLayer {
-                CameraPreview(layer: previewLayer)
-                    .ignoresSafeArea()
-                    .opacity(cameraOpacity)
+                CameraPreview(layer: previewLayer, onReady: {})
+                                .ignoresSafeArea()
+
             } else {
                 Color.black.ignoresSafeArea()
                     .overlay(ProgressView().tint(.white))
-                    .opacity(cameraOpacity)
             }
             
             // Capa 2: La UI principal.
@@ -48,11 +52,12 @@ struct LiveView: View {
                     onDashboard: { coordinator.goToDashboard() }
                 )
                 
+                // Botón de cambio de cámara, ahora en el header para no estar sobre el video.
                 HStack {
                     Spacer()
                     Button(action: { cameraService.switchCamera() }) {
                         Image(systemName: "arrow.triangle.2.circlepath.camera")
-                            .font(.title3).foregroundColor(.white).padding(8)
+                            .font(.title3).foregroundColor(.textPrimary).padding(8)
                             .background(.black.opacity(0.4)).clipShape(Circle())
                     }
                 }
@@ -61,30 +66,29 @@ struct LiveView: View {
                 Spacer()
                 
                 ControlPanelView(
-                    isAnalyzing: $isAnalyzing,
-                    isListening: $isListening,
-                    command: .constant(nil),
-                    response: .constant(nil),
-                    bubbleColors: panelBubbleColors // Pasamos los colores al panel
+                    isAnalyzing: $viewModel.isAnalyzing,
+                    isListening: $viewModel.isListening,
+                    command: $viewModel.commandText,
+                    response: $viewModel.responseText,
+                    bubbleColors: panelBubbleColors
                 )
             }
         }
         .onAppear {
-            cameraService.configure()
-            cameraService.restartIfNeeded()
-            withAnimation(.easeIn(duration: 0.5)) {
-                        cameraOpacity = 1.0
-                    }
+            viewModel.onAppear()
         }
         .onDisappear {
-            cameraService.stop()
-            cameraOpacity = 0.0
+            viewModel.onDisappear()
         }
         .sheet(isPresented: $isShowingSettings) { SettingsView() }
+        .sheet(isPresented: $isShowingDashboard) { DashboardView()}
+            
+        
     }
 }
 
-// MARK: - Componentes de UI
+
+
 
 private struct LiveHeaderView: View {
     var onSettings: () -> Void
@@ -102,10 +106,7 @@ private struct LiveHeaderView: View {
         .foregroundColor(.textMuted)
         .padding(.horizontal, 24)
         .padding(.vertical, 12)
-        .background(
-            .ultraThinMaterial)
-            
-        
+        .background(.ultraThinMaterial)
     }
 }
 
@@ -114,7 +115,7 @@ private struct ControlPanelView: View {
     @Binding var isListening: Bool
     @Binding var command: String?
     @Binding var response: String?
-    let bubbleColors: [Color] // Recibe los colores para la burbuja
+    let bubbleColors: [Color]
     
     private var statusText: String {
         if isListening { return "E S C U C H A N D O" }
@@ -134,7 +135,9 @@ private struct ControlPanelView: View {
                 Circle().fill(statusColor).frame(width: 8, height: 8)
                 Text(statusText).font(.geist(12, weight: .light)).tracking(2.0).foregroundColor(.textPrimary)
             }
-            if command == nil && response == nil {
+            if let responseText = response {
+                Text(responseText).font(.geist(14))
+            } else if command == nil {
                 Text("Escuchando...").font(.geist(12)).foregroundColor(.textPrimary.opacity(0.6)).italic()
             }
         }
@@ -143,18 +146,15 @@ private struct ControlPanelView: View {
         .padding(.bottom, 48)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(
-                    // CORREGIDO: La burbuja ahora está contenida y es el fondo de este panel
             ZStack {
-                  Color.white
-              
-                        
-                        // Burbuja contenida
-                        GlassBubbleView(
-                            dynamicColors: bubbleColors,
-                            opacity: isListening ? 0.35 : 0.20 // Opacidad más sutil
-                        )
-                        .clipped() // <-- ESTA ES LA CLAVE PARA CONTENER LA BURBUJA
-                    }
+                Color.white
+                GlassBubbleView(
+                    dynamicColors: bubbleColors,
+                    opacity: isListening ? 0.35 : 0.20
+                )
+                .clipped()
+            }
+            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
         )
     }
 }
@@ -169,7 +169,7 @@ private struct GlassBubbleView: View {
             createBubble(colors: [dynamicColors[0], dynamicColors[1]], width: animate ? 420 : 320, height: animate ? 150 : 200, x: animate ? 130 : -130, y: animate ? -40 : 40, rotation: animate ? 180 : 0)
             createBubble(colors: [dynamicColors[1], (dynamicColors.count > 2 ? dynamicColors[2] : dynamicColors[0])], width: animate ? 300 : 400, height: animate ? 220 : 150, x: animate ? -130 : 130, y: animate ? 50 : -50, rotation: animate ? -180 : 0)
         }
-        .blur(radius: 40) // Menos blur para que sea más sutil
+        .blur(radius: 40)
         .opacity(opacity)
         .animation(.easeInOut(duration: 2.0), value: opacity)
         .onAppear {
@@ -193,3 +193,4 @@ private struct GlassBubbleView: View {
     RootView()
         .environmentObject(AppCoordinator())
 }
+

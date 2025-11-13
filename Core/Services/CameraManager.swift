@@ -15,9 +15,9 @@ class CameraManager: NSObject {
     private let sessionQueue = DispatchQueue(label: "cameraSessionQueue")
     
     var onPreviewLayerReady: ((AVCaptureVideoPreviewLayer) -> Void)?
-    var onAmbientColorsReady: (([Color]) -> Void)?
     
-    private let context = CIContext()
+    var onSampleBuffer: ((CMSampleBuffer) -> Void)?
+
     private var isConfigured = false
     
     override init() {
@@ -169,32 +169,8 @@ class CameraManager: NSObject {
 }
 
 extension CameraManager: AVCaptureVideoDataOutputSampleBufferDelegate {
-    func captureOutput(_ output: AVCaptureOutput,
-                       didOutput sampleBuffer: CMSampleBuffer,
-                       from connection: AVCaptureConnection) {
-        guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
-            return
-        }
-        let ciImage = CIImage(cvPixelBuffer: imageBuffer)
-        let filter = CIFilter.areaAverage()
-        filter.inputImage = ciImage
-        filter.extent = ciImage.extent
-        guard let outputImage = filter.outputImage else { return }
-        
-        var bitmap = [UInt8](repeating: 0, count: 4)
-        context.render(outputImage,
-                       toBitmap: &bitmap,
-                       rowBytes: 4,
-                       bounds: CGRect(x: 0, y: 0, width: 1, height: 1),
-                       format: .RGBA8,
-                       colorSpace: nil)
-        let averageColor = Color(red: Double(bitmap[0]) / 255.0,
-                                 green: Double(bitmap[1]) / 255.0,
-                                 blue: Double(bitmap[2]) / 255.0)
-        
-        DispatchQueue.main.async { [weak self] in
-            self?.onAmbientColorsReady?([averageColor.opacity(0.5),
-                                         averageColor.opacity(0.2)])
-        }
+    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        // La función ahora solo se preocupa de enviar el fotograma crudo.
+        onSampleBuffer?(sampleBuffer) // <-- AÚN NO LO NECESITAMOS, LO DEJAREMOS COMENTADO
     }
 }

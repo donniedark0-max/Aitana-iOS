@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		E31014832EC446490059CD95 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31014822EC446430059CD95 /* CameraManager.swift */; };
+		E363F7082EC5A89E00D9F972 /* WebSocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E363F7072EC5A89500D9F972 /* WebSocketManager.swift */; };
+		E363F70A2EC5A94B00D9F972 /* LiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E363F7092EC5A94100D9F972 /* LiveViewModel.swift */; };
+		E363F70C2EC5BE0A00D9F972 /* VisionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E363F7062EC5A86700D9F972 /* VisionModels.swift */; };
 		E3A29AE22EBEC5C000F75960 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A29ADF2EBEC5C000F75960 /* LoginView.swift */; };
 		E3A29AEF2EBECFC000F75960 /* Geist-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E3A29AED2EBECFC000F75960 /* Geist-Regular.otf */; };
 		E3A29AF02EBECFC000F75960 /* GeistMono-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E3A29AEE2EBECFC000F75960 /* GeistMono-Regular.otf */; };
@@ -33,6 +36,9 @@
 
 /* Begin PBXFileReference section */
 		E31014822EC446430059CD95 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
+		E363F7062EC5A86700D9F972 /* VisionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionModels.swift; sourceTree = "<group>"; };
+		E363F7072EC5A89500D9F972 /* WebSocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketManager.swift; sourceTree = "<group>"; };
+		E363F7092EC5A94100D9F972 /* LiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveViewModel.swift; sourceTree = "<group>"; };
 		E39732F92EBE890100D13AAD /* Aitana-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aitana-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3A29ADF2EBEC5C000F75960 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		E3A29AEC2EBECFC000F75960 /* Geist-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Geist-Bold.otf"; sourceTree = "<group>"; };
@@ -126,6 +132,7 @@
 		E3A29AE62EBEC86E00F75960 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				E363F7072EC5A89500D9F972 /* WebSocketManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -154,6 +161,7 @@
 		E3A29AE92EBEC89900F75960 /* LiveView */ = {
 			isa = PBXGroup;
 			children = (
+				E363F7092EC5A94100D9F972 /* LiveViewModel.swift */,
 				E3D7B1F62EC269FB005C5FEC /* LiveView.swift */,
 			);
 			path = LiveView;
@@ -162,6 +170,7 @@
 		E3A29AEA2EBEC8AF00F75960 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E363F7062EC5A86700D9F972 /* VisionModels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -314,11 +323,13 @@
 				E3D7B1FC2EC2789D005C5FEC /* AppCoordinator.swift in Sources */,
 				E3A5C6092EBFD6B000782EDB /* PersonalInfoStepView.swift in Sources */,
 				E3D7B1EC2EC1CEF8005C5FEC /* Aitana_iOSApp.swift in Sources */,
+				E363F70A2EC5A94B00D9F972 /* LiveViewModel.swift in Sources */,
 				E3A5C60A2EBFD6B000782EDB /* ProfilePhotoStepView.swift in Sources */,
 				E3A29AF32EBED19E00F75960 /* Font+Extensions.swift in Sources */,
 				E3D7B1F72EC26A07005C5FEC /* LiveView.swift in Sources */,
 				E3A29AE22EBEC5C000F75960 /* LoginView.swift in Sources */,
 				E3A5C5F32EBFCE2500782EDB /* OnboardingView.swift in Sources */,
+				E363F7082EC5A89E00D9F972 /* WebSocketManager.swift in Sources */,
 				E3D7B1FA2EC272FB005C5FEC /* SettingsView.swift in Sources */,
 				E3A29AF52EBED8C900F75960 /* Color+Extensions.swift in Sources */,
 				E31014832EC446490059CD95 /* CameraManager.swift in Sources */,
@@ -327,6 +338,7 @@
 				E3A5C6022EBFD23D00782EDB /* RootView.swift in Sources */,
 				E3D7B1EF2EC1CF33005C5FEC /* DashboardView.swift in Sources */,
 				E3A5C5FD2EBFCE5D00782EDB /* GradientButton.swift in Sources */,
+				E363F70C2EC5BE0A00D9F972 /* VisionModels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
