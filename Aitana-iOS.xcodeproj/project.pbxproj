@@ -11,6 +11,10 @@
 		E363F7082EC5A89E00D9F972 /* WebSocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E363F7072EC5A89500D9F972 /* WebSocketManager.swift */; };
 		E363F70A2EC5A94B00D9F972 /* LiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E363F7092EC5A94100D9F972 /* LiveViewModel.swift */; };
 		E363F70C2EC5BE0A00D9F972 /* VisionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E363F7062EC5A86700D9F972 /* VisionModels.swift */; };
+		E38A79952EC803A500C0D7D9 /* ObjectDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38A79942EC8039C00C0D7D9 /* ObjectDetector.swift */; };
+		E38A79972EC803B100C0D7D9 /* GestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38A79962EC803AA00C0D7D9 /* GestureRecognizer.swift */; };
+		E38A79992EC803BE00C0D7D9 /* TextRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38A79982EC803B400C0D7D9 /* TextRecognizer.swift */; };
+		E38A799C2EC803F700C0D7D9 /* yolov11s.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E38A799B2EC803F700C0D7D9 /* yolov11s.mlpackage */; };
 		E3A29AE22EBEC5C000F75960 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A29ADF2EBEC5C000F75960 /* LoginView.swift */; };
 		E3A29AEF2EBECFC000F75960 /* Geist-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E3A29AED2EBECFC000F75960 /* Geist-Regular.otf */; };
 		E3A29AF02EBECFC000F75960 /* GeistMono-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E3A29AEE2EBECFC000F75960 /* GeistMono-Regular.otf */; };
@@ -39,6 +43,10 @@
 		E363F7062EC5A86700D9F972 /* VisionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionModels.swift; sourceTree = "<group>"; };
 		E363F7072EC5A89500D9F972 /* WebSocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketManager.swift; sourceTree = "<group>"; };
 		E363F7092EC5A94100D9F972 /* LiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveViewModel.swift; sourceTree = "<group>"; };
+		E38A79942EC8039C00C0D7D9 /* ObjectDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDetector.swift; sourceTree = "<group>"; };
+		E38A79962EC803AA00C0D7D9 /* GestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureRecognizer.swift; sourceTree = "<group>"; };
+		E38A79982EC803B400C0D7D9 /* TextRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognizer.swift; sourceTree = "<group>"; };
+		E38A799B2EC803F700C0D7D9 /* yolov11s.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = yolov11s.mlpackage; sourceTree = "<group>"; };
 		E39732F92EBE890100D13AAD /* Aitana-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aitana-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3A29ADF2EBEC5C000F75960 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		E3A29AEC2EBECFC000F75960 /* Geist-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Geist-Bold.otf"; sourceTree = "<group>"; };
@@ -95,9 +103,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E38A79932EC8038200C0D7D9 /* ML */ = {
+			isa = PBXGroup;
+			children = (
+				E38A79982EC803B400C0D7D9 /* TextRecognizer.swift */,
+				E38A79962EC803AA00C0D7D9 /* GestureRecognizer.swift */,
+				E38A79942EC8039C00C0D7D9 /* ObjectDetector.swift */,
+			);
+			path = ML;
+			sourceTree = "<group>";
+		};
+		E38A799A2EC803E100C0D7D9 /* MLModels */ = {
+			isa = PBXGroup;
+			children = (
+				E38A799B2EC803F700C0D7D9 /* yolov11s.mlpackage */,
+			);
+			path = MLModels;
+			sourceTree = "<group>";
+		};
 		E39732F02EBE890100D13AAD = {
 			isa = PBXGroup;
 			children = (
+				E38A799A2EC803E100C0D7D9 /* MLModels */,
 				E3D7B1F42EC1D5B3005C5FEC /* README.md */,
 				E3A5C6002EBFCFF300782EDB /* App */,
 				E3A29AEB2EBECE9700F75960 /* Fonts */,
@@ -120,6 +147,7 @@
 		E3A29AE52EBEC86300F75960 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				E38A79932EC8038200C0D7D9 /* ML */,
 				E3A5C5FE2EBFCF7200782EDB /* Components */,
 				E3A29AF42EBED8C700F75960 /* Color+Extensions.swift */,
 				E3A29AF22EBED01A00F75960 /* Font+Extensions.swift */,
@@ -319,6 +347,7 @@
 			files = (
 				E3A5C6072EBFD6B000782EDB /* SettingsStepView.swift in Sources */,
 				E3D7B2002EC27A39005C5FEC /* CameraService.swift in Sources */,
+				E38A79992EC803BE00C0D7D9 /* TextRecognizer.swift in Sources */,
 				E3A5C6082EBFD6B000782EDB /* WelcomeStepView.swift in Sources */,
 				E3D7B1FC2EC2789D005C5FEC /* AppCoordinator.swift in Sources */,
 				E3A5C6092EBFD6B000782EDB /* PersonalInfoStepView.swift in Sources */,
@@ -326,6 +355,7 @@
 				E363F70A2EC5A94B00D9F972 /* LiveViewModel.swift in Sources */,
 				E3A5C60A2EBFD6B000782EDB /* ProfilePhotoStepView.swift in Sources */,
 				E3A29AF32EBED19E00F75960 /* Font+Extensions.swift in Sources */,
+				E38A79972EC803B100C0D7D9 /* GestureRecognizer.swift in Sources */,
 				E3D7B1F72EC26A07005C5FEC /* LiveView.swift in Sources */,
 				E3A29AE22EBEC5C000F75960 /* LoginView.swift in Sources */,
 				E3A5C5F32EBFCE2500782EDB /* OnboardingView.swift in Sources */,
@@ -337,6 +367,8 @@
 				E3A29AF72EBED94800F75960 /* AnimatedGradientButton.swift in Sources */,
 				E3A5C6022EBFD23D00782EDB /* RootView.swift in Sources */,
 				E3D7B1EF2EC1CF33005C5FEC /* DashboardView.swift in Sources */,
+				E38A79952EC803A500C0D7D9 /* ObjectDetector.swift in Sources */,
+				E38A799C2EC803F700C0D7D9 /* yolov11s.mlpackage in Sources */,
 				E3A5C5FD2EBFCE5D00782EDB /* GradientButton.swift in Sources */,
 				E363F70C2EC5BE0A00D9F972 /* VisionModels.swift in Sources */,
 			);

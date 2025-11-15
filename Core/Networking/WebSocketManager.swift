@@ -8,6 +8,9 @@
 import Foundation
 import Combine
 
+/*
+// --- DESACTIVADO TEMPORALMENTE PARA LA FASE 1 (ON-DEVICE) ---
+ 
 @MainActor
 class WebSocketManager: ObservableObject {
     private var webSocketTask: URLSessionWebSocketTask?
@@ -79,3 +82,4 @@ class WebSocketManager: ObservableObject {
         }
     }
 }
+ */

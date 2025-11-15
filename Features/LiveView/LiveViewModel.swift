@@ -14,74 +14,72 @@ class LiveViewModel: ObservableObject {
     // --- Estado de la UI ---
     @Published var isAnalyzing = false
     @Published var isListening = false
-    @Published var detectedObjects: [DetectedObject] = []
-    @Published var detectedGestures: [String] = []
-    @Published var responseText: String?
-    @Published var commandText: String? = nil 
+    @Published var latestAnalysisResult = AnalysisResult()
     
-    // --- Servicios y Managers ---
-    private var cameraService = CameraService()
-    private let webSocketManager = WebSocketManager()
+    private var cameraService: CameraService
     
+    // --- Analizadores de IA On-Device ---
+    private let objectDetector = ObjectDetector()
+    private let textRecognizer = TextRecognizer()
+    
+    private let frameSubject = PassthroughSubject<CMSampleBuffer, Never>()
     private var cancellables = Set<AnyCancellable>()
     
     init(cameraService: CameraService) {
-            self.cameraService = cameraService
-            
-            // Suscribirse a los fotogramas de la cámara
-            self.cameraService.onSampleBuffer = { [weak self] buffer in
-                self?.sendFrame(buffer)
-            }
-            
-            // Suscribirse a las respuestas del WebSocket
-            webSocketManager.responseSubject
-                .receive(on: DispatchQueue.main)
-                .sink { [weak self] response in
-                    self?.handleBackendResponse(response)
-                }
-                .store(in: &cancellables)
-        }
-    
-    func onAppear() {
-            cameraService.configure()
-            cameraService.restartIfNeeded() // Usamos tu lógica de reinicio que funciona
-            
-            if let url = URL(string: "ws://localhost/api/vision/stream/detect") {
-                webSocketManager.connect(url: url)
-            }
-            isAnalyzing = true
+        self.cameraService = cameraService
+        self.cameraService.onSampleBuffer = { [weak self] buffer in
+            self?.analyzeFrame(buffer)
         }
         
-        func onDisappear() {
-            cameraService.stop()
-            webSocketManager.disconnect()
-            isAnalyzing = false
-        }
-    
-    private func sendFrame(_ sampleBuffer: CMSampleBuffer) {
-        guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
-        
-        let ciImage = CIImage(cvPixelBuffer: imageBuffer)
-        let context = CIContext()
-        
-        guard let cgImage = context.createCGImage(ciImage, from: ciImage.extent),
-              let imageData = UIImage(cgImage: cgImage).jpegData(compressionQuality: 0.5) else { return }
-        
-        webSocketManager.send(frameData: imageData)
     }
     
-    private func handleBackendResponse(_ response: OrchestratorResponse) {
-           if let visionPayload = response.vision, !visionPayload.objects.isEmpty {
-               let descriptions = visionPayload.objects.map { obj -> String in
-                   var desc = obj.label
-                   if let dist = obj.distanceM {
-                       desc += " a \(String(format: "%.1f", dist))m"
-                   }
-                   return desc
-               }
-               self.responseText = descriptions.joined(separator: ", ")
-           } else {
-               self.responseText = nil
-           }
-       }
-}
+    func onAppear() {
+        isAnalyzing = true
+        cameraService.configure()
+        cameraService.restartIfNeeded()
+    }
+    
+    func onDisappear() {
+        isAnalyzing = false
+        cameraService.stop()
+    }
+    
+    func switchCamera() {
+        cameraService.switchCamera()
+    }
+    
+    private func analyzeFrame(_ sampleBuffer: CMSampleBuffer) {
+        Task {
+            async let objectResults = self.runObjectDetection(on: sampleBuffer)
+            async let textResults = self.runTextRecognition(on: sampleBuffer)
+            
+            // Esperamos a que ambos terminen
+            let (objects, text) = await (objectResults, textResults)
+            
+            // Actualizamos la UI una sola vez en el hilo principal
+            DispatchQueue.main.async {
+                self.latestAnalysisResult.objects = objects
+                self.latestAnalysisResult.recognizedText = text
+            }
+        }
+    }
+
+    
+    // Funciones helper asíncronas para cada analizador
+        private func runObjectDetection(on buffer: CMSampleBuffer) async -> [DetectedObject] {
+            
+            return await withCheckedContinuation { continuation in
+                objectDetector.analyze(sampleBuffer: buffer) { results in
+                    continuation.resume(returning: results)
+                }
+            }
+        }
+        
+        private func runTextRecognition(on buffer: CMSampleBuffer) async -> String {
+            return await withCheckedContinuation { continuation in
+                textRecognizer.analyze(sampleBuffer: buffer) { result in
+                    continuation.resume(returning: result)
+                }
+            }
+        }
+    }

@@ -170,7 +170,7 @@ class CameraManager: NSObject {
 
 extension CameraManager: AVCaptureVideoDataOutputSampleBufferDelegate {
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        // La función ahora solo se preocupa de enviar el fotograma crudo.
-        onSampleBuffer?(sampleBuffer) // <-- AÚN NO LO NECESITAMOS, LO DEJAREMOS COMENTADO
+        // Ahora sí, enviamos cada fotograma para su análisis
+        onSampleBuffer?(sampleBuffer)
     }
 }

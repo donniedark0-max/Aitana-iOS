@@ -6,35 +6,19 @@
 //
 
 import Foundation
+import CoreGraphics
 
-// Corresponde a la respuesta completa del orquestador
-struct OrchestratorResponse: Codable {
-    let vision: VisionPayload?
-    let gestures: GesturePayload?
+// Estructura unificada para cualquier resultado de análisis de visión
+struct AnalysisResult {
+    var objects: [DetectedObject] = []
+    var gestures: [String] = []
+    var recognizedText: String = ""
 }
 
-// Corresponde al objeto "vision"
-struct VisionPayload: Codable {
-    let objects: [DetectedObject]
-}
-
-// Corresponde al objeto "gestures"
-struct GesturePayload: Codable {
-    let gestures: [String]
-}
-
-// Corresponde a cada objeto detectado por YOLO
-struct DetectedObject: Codable, Identifiable {
-    let id = UUID() // Para usar en listas de SwiftUI
-    let label: String
-    let confidence: Double
-    let box: [Int]
-    let distanceM: Double?
-    let dominantColorHex: String?
-
-    enum CodingKeys: String, CodingKey {
-        case label, confidence, box
-        case distanceM = "distance_m"
-        case dominantColorHex = "dominant_color_hex"
-    }
+// Modelo para un objeto detectado localmente
+struct DetectedObject: Identifiable, Equatable {
+    let id = UUID()
+    var label: String
+    var confidence: Float
+    var boundingBox: CGRect
 }
